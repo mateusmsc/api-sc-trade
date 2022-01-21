@@ -1,29 +1,27 @@
 package com.softhere.apisctrade.model
 
-import com.sun.istack.NotNull
+import groovyjarjarantlr4.v4.runtime.misc.NotNull
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
 import javax.persistence.Table
 
 @Entity
-@Table(name = "user")
-class User {
+@Table(name = "album")
+class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id
 
     @NotNull
-    String nickname
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    User user
 
     @NotNull
-    String password
-
-    @NotNull
-    String phone
-
-    @NotNull
-    String birthday
+    String name
 
 }
