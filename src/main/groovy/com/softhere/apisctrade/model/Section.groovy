@@ -9,7 +9,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "album")
+@Table(name = "section")
 class Section {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
