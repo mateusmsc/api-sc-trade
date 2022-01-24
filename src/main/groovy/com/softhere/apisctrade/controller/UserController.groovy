@@ -1,6 +1,6 @@
 package com.softhere.apisctrade.controller
 
-import com.softhere.apisctrade.model.User
+import com.softhere.apisctrade.model.dto.UserDTO
 import com.softhere.apisctrade.service.UserService
 import com.softhere.apisctrade.validators.Validator
 import org.springframework.beans.factory.annotation.Autowired
@@ -30,31 +30,31 @@ class UserController extends Validator {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus( HttpStatus.CREATED )
     @ResponseBody
-    ResponseEntity<User> create(@RequestBody @Valid User user){
-        return ResponseEntity.ok(service.save(user))
+    ResponseEntity<UserDTO> create(@RequestBody @Valid UserDTO userDTO){
+        return ResponseEntity.ok(service.save(userDTO))
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    ResponseEntity<User> update (@RequestBody User user) {
-        return ResponseEntity.ok(service.update(user))
+    ResponseEntity<UserDTO> update (@RequestBody @Valid UserDTO userDTO) {
+        return ResponseEntity.ok(service.update(userDTO))
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    List<User> findAll(){
+    List<UserDTO> findAll(){
         return service.findAll()
     }
 
     @GetMapping( value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    ResponseEntity<User> findById(@PathVariable Integer id) {
+    ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
         return ResponseEntity.ok(service.findById(id))
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    ResponseEntity<User> delete(@PathVariable Integer id){
+    ResponseEntity<UserDTO> delete(@PathVariable Integer id){
         return ResponseEntity.ok(service.delete(id))
     }
 
