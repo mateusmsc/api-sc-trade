@@ -34,7 +34,7 @@ class StickerTrade {
 
     @NotNull
     @OneToOne
-    @JoinColumn (name = "id_sticker_receiver")
+    @JoinColumn (name = "id_sticker_sender")
     Sticker stickerSender
 
     String status

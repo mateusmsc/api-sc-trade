@@ -1,11 +1,11 @@
 package com.softhere.apisctrade.model
 
-import com.sun.istack.NotNull
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
+import javax.validation.constraints.NotBlank
 
 @Entity
 @Table(name = "user")
@@ -14,16 +14,19 @@ class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id
 
-    @NotNull
+    @NotBlank(message = "Nickname eh obrigatorio")
     String nickname
 
-    @NotNull
+    @NotBlank (message = "Email eh obrigatorio")
+    String email
+
+    @NotBlank(message = "Password eh obrigatorio")
     String password
 
-    @NotNull
+    @NotBlank(message = "Phone eh obrigatorio")
     String phone
 
-    @NotNull
+    @NotBlank(message = "Birthdate eh obrigatorio")
     String birthday
 
 }
